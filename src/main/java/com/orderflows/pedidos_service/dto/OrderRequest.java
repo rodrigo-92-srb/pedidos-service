@@ -1,0 +1,16 @@
+package com.orderflows.pedidos_service.dto;
+
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
+public class OrderRequest {
+
+    private String customerName;
+
+    private String customerEmail;
+
+    private BigDecimal totalAmount;
+
+}
