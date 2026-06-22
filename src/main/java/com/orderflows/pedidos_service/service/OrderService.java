@@ -2,6 +2,7 @@ package com.orderflows.pedidos_service.service;
 
 import com.orderflows.pedidos_service.dto.OrderRequest;
 import com.orderflows.pedidos_service.dto.OrderResponse;
+import com.orderflows.pedidos_service.exception.OrderNotFoundException;
 import com.orderflows.pedidos_service.model.Order;
 import com.orderflows.pedidos_service.model.OrderStatus;
 import com.orderflows.pedidos_service.repository.OrderRepository;
@@ -53,7 +54,7 @@ public class OrderService {
     public OrderResponse cancelOrder(Long id){
 
         Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Order not found!"));
+                .orElseThrow(() -> new OrderNotFoundException("Order not found with id: "+id));
 
         order.setStatus(OrderStatus.CANCELED);
         Order savedOrder = orderRepository.save(order);
