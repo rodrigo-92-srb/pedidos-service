@@ -22,6 +22,7 @@ public class Order {
 
     private BigDecimal totalAmount;
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     private LocalDateTime createdAt;
